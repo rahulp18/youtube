@@ -4,7 +4,8 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
-
+ 
+import {Card,Comments} from '../components'
 const Container=styled.div``;
 const Wrapper=styled.div`
 display:flex;
@@ -19,7 +20,7 @@ const Content=styled.div`
 `;
 const Recomended=styled.div`
 flex:2;
-border:2px solid red;
+// border:2px solid red;
 `;
 
 const Title=styled.h1`
@@ -157,13 +158,25 @@ const Video = () => {
       </ChannelInfo>
       <Subscribe>SUBSCRIBE</Subscribe>
     </Channel>
+    <Hr/>
+    <Comments/>
    </VideoPlayer>
-   <Recomended>Recomended</Recomended>
+   <Recomended>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+    <Card type='sm'/>
+   </Recomended>
 </Wrapper>
     </Container>
   )
 }
 
-export default Video
+export default Video;
 
-{/* <iframe width="560" height="315" src="https://www.youtube.com/embed/leFEflp6hSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}

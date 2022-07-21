@@ -11,8 +11,8 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100%;
-  height: ${(props) => (props.type === "sm" ? "120px" : "202px")};
+  width:  ${(props) => (props.type === "sm" ? "80%" : "100%")};
+  height: ${(props) => (props.type === "sm" ? "110px" : "202px")};
   background-color: #999;
   flex: 1;
   object-fit: cover;
@@ -54,6 +54,7 @@ const Info = styled.div`
 `;
 
 const Card = ({type}) => {
+  const txt='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis libero recusandae aperiam veniam quam nobis quas cumque natus quisquam sequi. '
   return (
      <Link to='/video/test' style={{textDecoration:"none"}} >
         <Container type={type}>
@@ -61,7 +62,7 @@ const Card = ({type}) => {
              <Details type={type}>
                 <ChannelImage type={type} src="https://w0.peakpx.com/wallpaper/463/507/HD-wallpaper-jaguar-animal-big-cats-wild.jpg" />
                 <Texts>
-                    <Title>Text Video</Title>
+                    <Title> {type==='sm'?`${txt.substring(0,10)}...`:txt} </Title>
                     <ChannelName>Rahul Dev</ChannelName>
                     <Info>660,987 • 1days ago </Info>
                 </Texts>
