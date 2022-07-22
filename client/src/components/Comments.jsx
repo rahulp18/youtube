@@ -21,12 +21,12 @@ const Input=styled.input`
 width:100%;
 border:none;
 outline:none;
-color:${({theme})=>theme.textSoft};
+color:${({theme})=>theme.text};
 background:transparent;
 border-bottom:1px solid ${({theme})=>theme.textSoft};
 font-size: 14px;
 font-size: 14px;
-color: white;
+
 `;
 
 const CommentBox=styled.div`
@@ -45,13 +45,14 @@ display: flex;
 flex-direction: row;
 gap: 10px;
 `;
+ 
 const Button=styled.button`
    margin-top: 4px;
     padding: 7px 9px;
     border-radius: 3px;
     border: none;
     background:${(props)=>props.type==='fill'?'#3ea6ff':'transparent'};
-    color:${(props)=>props.type!=='fill'?`${({theme})=>theme.textSoft}`:'black'};
+    color:${(props)=>props.type==='fill'?'white':'black'};
     text-transform: uppercase;
     font-weight: 600;
     cursor:pointer;
@@ -86,6 +87,7 @@ font-weight: 600;
 text-transform: uppercase;
 `;
 const Comments = () => {
+ 
   return (
     <Container>
       <Header>

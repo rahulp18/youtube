@@ -54,6 +54,7 @@ const Info = styled.div`
 `;
 
 const Card = ({type}) => {
+  
   const txt='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis libero recusandae aperiam veniam quam nobis quas cumque natus quisquam sequi. '
   return (
      <Link to='/video/test' style={{textDecoration:"none"}} >
@@ -62,7 +63,7 @@ const Card = ({type}) => {
              <Details type={type}>
                 <ChannelImage type={type} src="https://w0.peakpx.com/wallpaper/463/507/HD-wallpaper-jaguar-animal-big-cats-wild.jpg" />
                 <Texts>
-                    <Title> {type==='sm'?`${txt.substring(0,10)}...`:txt} </Title>
+                    <Title> {type==='sm'?`${txt.substring(0,10)}...`:`${txt.substring(0,50)}...`} </Title>
                     <ChannelName>Rahul Dev</ChannelName>
                     <Info>660,987 • 1days ago </Info>
                 </Texts>
