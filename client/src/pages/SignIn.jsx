@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import styled from 'styled-components'
 import Alert from '../components/Alert';
- 
+import axios from 'axios'
 
 const Container=styled.div`
    position:relative;
@@ -88,15 +88,20 @@ const showNotification=(show=false,message='',type='')=>{
 const removeNotification=()=>{
   showNotification(false,"","");
 }
-const handleSubmit=(e)=>{
+const handleSubmit=async(e)=>{
  e.preventDefault();
  
  if(userData.password!==userData.confirmPassword && isSignup ){
   showNotification( true, 'Password mismatch', 'warnings');
   setUserData(inititalState);
  } else{
-  showNotification( true, isSignup?"Sign Up Successfully":"SignIn successfully",'success');
-
+  try {
+    const res=await axios.post('/auth/signin',{email:userData.email,password:userData.password});
+    console.log(res.data);
+    showNotification( true, isSignup?"Sign Up Successfully":"SignIn successfully",'success');
+  } catch (error) {
+    showNotification( true, isSignup?"Sign Up Successfully":error.message,'error');
+  }
  }
   
 }

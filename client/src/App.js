@@ -28,11 +28,15 @@ const App = () => {
        <Navbar/>
         <Wrapper>
           <Routes>
-            <Route index element={<Home/>} />
+         <Route path='/' >
+         <Route index element={<Home type="random" />} />
+         <Route path='trands' element={<Home type="trand" />} />
+         <Route path='subscription' element={<Home type="sub" />} />
             <Route path='signin' element={<SignIn/>} />
             <Route path='video'>
               <Route path=':id' element={<Video/>}/>
             </Route>
+         </Route>
           </Routes>
         </Wrapper>
       </Main>

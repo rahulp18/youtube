@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios';
+import {format} from 'timeago.js'
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
@@ -53,19 +54,34 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = ({type}) => {
+
+
+
+
+const Card = ({type,data}) => {
+
+  const [channel,setChannel]=useState({});
+
+  useEffect(() => {
+       const fetchChennelData=async()=>{
+        const res=await axios.get(`/user/find/${data.userId}`);
+        setChannel(res.data);
+       }
+       fetchChennelData();
+  }, [data.userId])
   
-  const txt='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis libero recusandae aperiam veniam quam nobis quas cumque natus quisquam sequi. '
+ 
+  const txt=data.desc;
   return (
      <Link to='/video/test' style={{textDecoration:"none"}} >
         <Container type={type}>
-             <Image type={type} src="https://images3.alphacoders.com/246/246147.jpg" />
+             <Image type={type} src={data.imgUrl?data.imgUrl:'https://www.impactbnd.com/hubfs/404-error-page-examples-best.jpg'} />
              <Details type={type}>
-                <ChannelImage type={type} src="https://w0.peakpx.com/wallpaper/463/507/HD-wallpaper-jaguar-animal-big-cats-wild.jpg" />
+                <ChannelImage type={type} src={channel.img?channel.img:'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/man-vector-design-template-1ba90da9b45ecf00ceb3b8ae442ad32c_screen.jpg?ts=1601484738'} />
                 <Texts>
                     <Title> {type==='sm'?`${txt.substring(0,10)}...`:`${txt.substring(0,50)}...`} </Title>
-                    <ChannelName>Rahul Dev</ChannelName>
-                    <Info>660,987 • 1days ago </Info>
+                    <ChannelName>{channel.name}</ChannelName>
+                    <Info>{data.views} views • {format(data.createdAt)} </Info>
                 </Texts>
              </Details>
         </Container>

@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import { Card } from '../components'
-
+import axios from 'axios'
 
 const Contaier=styled.div`
   display:grid;
@@ -15,27 +15,30 @@ const Contaier=styled.div`
   }
 `
 
-const Home = () => {
+const Home = ({type}) => {
+
+    const[videos,setVideos]=useState([]);
+
+
+
+    useEffect(() => {
+      const fetchVideos = async ()=>{
+       const res=await axios.get(`/videos/${type}`);
+       setVideos(res.data);
+      }
+     fetchVideos();
+    }, [type])
+    
+  
+
   return (
    <Contaier>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
+    {
+      videos?.map((video)=>(
+        <Card key={video._id} data={video}/>
+      ))
+    }
+  
    </Contaier>
   )
 }

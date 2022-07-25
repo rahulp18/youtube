@@ -10,7 +10,7 @@ font-family: 'Inconsolata', monospace;
     top: -26px;
     right:120px;
     text-transform: uppercase;
-    background:${props=>props.type=='error'?'#ef0808b5':props.type==='success'?'#0baa0b6b':"#efd208b5"}
+    background:${props=>props.type==='error'?'#ef0808b5':props.type==='success'?'#0baa0b6b':"#efd208b5"}
     `;
     
 
